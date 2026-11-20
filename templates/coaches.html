@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Select Train Coach | SmartSeat</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar">
+    <div class="nav-logo">🚆 SmartSeat</div>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/">Find Trains</a>
+    </div>
+</nav>
+
+<!-- Header -->
+<header>
+    <h1>🚆 Select Your Coach</h1>
+
+    <p>
+        {{ train['train_name'] }} — Train Number:
+        {{ train['train_number'] }}
+    </p>
+</header>
+
+<main>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="/">Home</a>
+        <span>›</span>
+        <span>Coach Selection</span>
+    </div>
+
+    <!-- Train Details -->
+    <section class="train-summary">
+        <div>
+            <h2>{{ train['train_name'] }}</h2>
+
+            <p>
+                <strong>Train Number:</strong>
+                {{ train['train_number'] }}
+            </p>
+
+            <p class="summary-route">
+                {{ train['source'] }}
+                <span>➜</span>
+                {{ train['destination'] }}
+            </p>
+        </div>
+
+        <div class="summary-icon">🚆</div>
+    </section>
+
+    <!-- Coach Selection -->
+    <section class="coach-section">
+
+        <h2>Choose Your Coach</h2>
+
+        <p class="section-description">
+            Select a coach to explore its berths.
+        </p>
+
+        <div class="train-container">
+
+            {% for coach in coaches %}
+
+            <div class="train-card coach-card">
+
+                <div class="coach-icon">🚃</div>
+
+                <h3>Coach {{ coach['coach_number'] }}</h3>
+
+                <p>
+                    <strong>Coach Type:</strong>
+                    {{ coach['coach_type'] }}
+                </p>
+
+                <p>
+                    <strong>Total Sample Berths:</strong>
+                    {{ coach['total_berths'] }}
+                </p>
+
+                <a class="button"
+                   href="/berths/{{ coach['coach_id'] }}">
+                    View Berths →
+                </a>
+
+            </div>
+
+            {% else %}
+
+            <p>No coaches are available for this sample train.</p>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+    <p class="back-link">
+        <a href="/">← Back to All Trains</a>
+    </p>
+
+    <p class="sample-notice">
+        Sample project data only. This application is not connected
+        to live railway reservations.
+    </p>
+
+</main>
+
+<footer>
+    <p>Smart Train Seat Swapping | College Project Prototype</p>
+</footer>
+
+</body>
+</html>

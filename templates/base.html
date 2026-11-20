@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}SmartSeat{% endblock %}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header class="navbar">
+    <a href="{{ url_for('home') }}" class="brand">
+        🚆 SmartSeat
+    </a>
+
+    <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('login') }}">Passenger Login</a>
+        <a href="{{ url_for('tt_dashboard') }}">TT Portal</a>
+    </nav>
+
+    <a href="{{ url_for('login') }}" class="nav-button">
+        Get Started
+    </a>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    <h3>SmartSeat</h3>
+    <p>Smart Train Seat Exchange and Passenger Management System</p>
+    <p>College Project Prototype | 2026</p>
+</footer>
+
+</body>
+</html>

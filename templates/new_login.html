@@ -1,0 +1,78 @@
+
+{% extends "base.html" %}
+
+{% block title %}SmartSeat | Login{% endblock %}
+
+{% block content %}
+
+<section class="login-section">
+
+    <div class="login-info">
+        <span class="eyebrow">WELCOME TO SMARTSEAT</span>
+
+        <h1>Your journey starts here.</h1>
+
+        <p>
+            Sign in to discover trains, manage your journey
+            and connect with passengers for seat exchanges.
+        </p>
+
+        <div class="login-benefit">✓ Secure passenger login</div>
+        <div class="login-benefit">✓ Registered account verification</div>
+        <div class="login-benefit">✓ Track your exchange requests</div>
+        <div class="login-benefit">✓ View TT exchange records</div>
+    </div>
+
+    <div class="login-card">
+
+        <div class="login-logo">🚆</div>
+
+        <h2>Passenger Login</h2>
+        <p class="muted">Enter your registered account details.</p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="form-message {{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endwith %}
+
+        <form action="{{ url_for('login') }}" method="POST">
+
+            <label>Username</label>
+            <input
+                type="text"
+                name="username"
+                placeholder="Enter your username"
+                autocomplete="username"
+                required
+            >
+
+            <label>Password</label>
+            <input
+                type="password"
+                name="password"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                required
+            >
+
+            <button type="submit" class="primary-btn full-width">
+                Login →
+            </button>
+
+        </form>
+
+        <div class="register-link">
+            <p class="muted">New to SmartSeat?</p>
+            <a href="{{ url_for('register') }}" class="primary-btn full-width">
+                Create New Account
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

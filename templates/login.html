@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% block title %}SmartSeat | Login{% endblock %}
+
+{% block content %}
+
+<section class="login-section">
+
+    <div class="login-info">
+        <span class="eyebrow">WELCOME TO SMARTSEAT</span>
+
+        <h1>Your journey starts here.</h1>
+
+        <p>
+            Sign in to discover trains, manage your journey
+            and connect with passengers for seat exchanges.
+        </p>
+
+        <div class="login-benefit">✓ Phone-based passenger identity</div>
+        <div class="login-benefit">✓ OTP and password login</div>
+        <div class="login-benefit">✓ Track your exchange requests</div>
+        <div class="login-benefit">✓ View TT exchange records</div>
+    </div>
+
+    <div class="login-card">
+
+        <div class="login-logo">🚆</div>
+
+        <h2>Passenger Login</h2>
+        <p class="muted">Enter your details to continue.</p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="form-message {{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endwith %}
+
+        {% if not otp_sent %}
+
+        <form action="{{ url_for('login') }}" method="POST">
+
+            <label>Passenger Name</label>
+            <input
+                type="text"
+                name="passenger_name"
+                placeholder="Enter your full name"
+                required
+            >
+
+            <label>Phone Number</label>
+            <input
+                type="tel"
+                name="phone_number"
+                placeholder="Enter 10-digit phone number"
+                pattern="[0-9]{10}"
+                maxlength="10"
+                required
+            >
+
+            <label>Choose Login Method</label>
+
+            <div class="login-options">
+
+                <label class="option">
+                    <input
+                        type="radio"
+                        name="method"
+                        value="otp"
+                        checked
+                    >
+                    OTP Login
+                </label>
+
+                <label class="option">
+                    <input
+                        type="radio"
+                        name="method"
+                        value="password"
+                    >
+                    Password Login
+                </label>
+
+            </div>
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Minimum 6 characters"
+                minlength="6"
+            >
+
+            <button type="submit" class="primary-btn full-width">
+                Continue
+            </button>
+
+            <p class="muted small">
+                OTP is simulated for this college project.
+            </p>
+
+        </form>
+
+        {% else %}
+
+        <div class="otp-box">
+            <h3>Verify Your Phone Number</h3>
+
+            <p class="muted">
+                A demonstration OTP has been generated.
+            </p>
+
+            <h2>{{ demo_otp }}</h2>
+
+            <p class="small muted">
+                Demo only: use this OTP in the box below.
+            </p>
+        </div>
+
+        <form action="{{ url_for('verify_otp') }}" method="POST">
+
+            <label>Enter OTP</label>
+
+            <input
+                type="text"
+                name="otp"
+                placeholder="Enter 6-digit OTP"
+                pattern="[0-9]{6}"
+                maxlength="6"
+                required
+            >
+
+            <button type="submit" class="primary-btn full-width">
+                Verify OTP
+            </button>
+
+        </form>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,74 @@
+
+{% extends "base.html" %}
+
+{% block title %}SmartSeat | Find Trains{% endblock %}
+
+{% block content %}
+
+<section class="dashboard-page">
+
+    <div class="dashboard-heading">
+        <span class="eyebrow">SMARTSEAT PASSENGER PORTAL</span>
+        <h1>Find Your Journey</h1>
+        <p>Select your source, destination and journey date.</p>
+    </div>
+
+    <div class="login-card">
+
+        <h2>🚆 Search Available Trains</h2>
+
+        <form method="POST" action="{{ url_for('search_trains') }}">
+
+            <label>Source Station</label>
+
+            <select name="source" required>
+                <option value="">Select Source</option>
+
+                {% for station in stations %}
+                    <option value="{{ station }}"
+                        {% if source == station %}selected{% endif %}>
+                        {{ station }}
+                    </option>
+                {% endfor %}
+            </select>
+
+            <label>Destination Station</label>
+
+            <select name="destination" required>
+                <option value="">Select Destination</option>
+
+                {% for station in stations %}
+                    <option value="{{ station }}"
+                        {% if destination == station %}selected{% endif %}>
+                        {{ station }}
+                    </option>
+                {% endfor %}
+            </select>
+
+            <label>Journey Date</label>
+
+            <input
+                type="date"
+                name="journey_date"
+                value="{{ journey_date }}"
+                min="{{ today }}"
+                required
+            >
+
+            <button type="submit" class="primary-btn full-width">
+                Search Trains →
+            </button>
+
+        </form>
+
+    </div>
+
+    <p>
+        <a href="{{ url_for('dashboard') }}">
+            ← Back to Passenger Dashboard
+        </a>
+    </p>
+
+</section>
+
+{% endblock %}

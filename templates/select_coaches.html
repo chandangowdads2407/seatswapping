@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}SmartSeat | Select Coach{% endblock %}
+
+{% block content %}
+
+<section class="dashboard-page">
+
+    <div class="dashboard-heading">
+        <div>
+            <span class="eyebrow">SMARTSEAT PASSENGER PORTAL</span>
+            <h1>Select Your Coach</h1>
+            <p>{{ train.train_name }} ({{ train.train_number }})</p>
+        </div>
+    </div>
+
+    <div class="dashboard-grid">
+
+        {% for coach in coaches %}
+
+        <div class="dashboard-panel">
+            <h2>Coach {{ coach.coach_number }}</h2>
+
+            <p>Coach Type: {{ coach.coach_type }}</p>
+            {% if coach.coach_type == "General" %}
+    <p>Total Seats: {{ coach.total_berths }}</p>
+{% else %}
+    <p>Total Berths: {{ coach.total_berths }}</p>
+{% endif %}
+
+            <a href="{{ url_for('view_berths', coach_id=coach.coach_id) }}"
+   class="primary-btn">
+    View Berths →
+</a>
+        </div>
+
+        {% else %}
+
+        <p>No coaches are available for this train.</p>
+
+        {% endfor %}
+
+    </div>
+
+    <p>
+        <a href="{{ url_for('search_trains') }}">
+            ← Back to Train Search
+        </a>
+    </p>
+
+</section>
+
+{% endblock %}

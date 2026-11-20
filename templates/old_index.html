@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Train Seat Swapping</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="nav-logo">🚆 SmartSeat</div>
+
+    <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="#trains">Find Trains</a>
+    <a href="/swap">Seat Swapping</a>
+</div>
+</nav>
+
+<!-- Header -->
+<header>
+    <h1>🚆 Smart Train Seat Swapping</h1>
+
+    <p>
+        Your journey, your comfort. Find trains, explore berths,
+        and manage seat-swap requests.
+    </p>
+</header>
+
+<main>
+
+    <!-- Dashboard -->
+    <section class="dashboard">
+        <div class="stat-card">
+            <div class="stat-icon">🚆</div>
+            <div>
+                <h3>{{ trains|length }}</h3>
+                <p>Sample Trains</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">🔎</div>
+            <div>
+                <h3>Easy</h3>
+                <p>Train Discovery</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">🪑</div>
+            <div>
+                <h3>Simple</h3>
+                <p>Berth Exploration</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Train Search -->
+    <section id="trains" class="train-section">
+
+        <h2>Find Your Train</h2>
+
+        <p class="section-description">
+            Search by train name, train number, source, or destination.
+        </p>
+
+        <div class="search-box">
+            <span>🔍</span>
+
+            <input
+                type="text"
+                id="trainSearch"
+                placeholder="Search trains or destinations..."
+                aria-label="Search trains"
+            >
+        </div>
+
+        <!-- Train Cards -->
+        <div class="train-container" id="trainContainer">
+
+            {% for train in trains %}
+
+            <div class="train-card">
+
+                <div class="train-icon">🚆</div>
+
+                <h3>{{ train['train_name'] }}</h3>
+
+                <p>
+                    <strong>Train Number:</strong>
+                    {{ train['train_number'] }}
+                </p>
+
+                <div class="route">
+                    <span>{{ train['source'] }}</span>
+                    <span class="arrow">➜</span>
+                    <span>{{ train['destination'] }}</span>
+                </div>
+
+                <a class="button"
+                   href="/coaches/{{ train['train_number'] }}">
+                    View Coaches →
+                </a>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        <p id="noResults" class="no-results" hidden>
+            No matching trains found. Try another search.
+        </p>
+
+        <p class="sample-notice">
+            Note: These are sample project records, not live railway data.
+        </p>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>Smart Train Seat Swapping | College Project Prototype</p>
+</footer>
+
+<!-- Search Functionality -->
+<script>
+    const searchInput = document.getElementById("trainSearch");
+    const trainCards = document.querySelectorAll(".train-card");
+    const noResults = document.getElementById("noResults");
+
+    searchInput.addEventListener("input", function () {
+        const searchValue = this.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        trainCards.forEach(function (card) {
+            const cardText = card.textContent.toLowerCase();
+            const matches = cardText.includes(searchValue);
+
+            card.style.display = matches ? "" : "none";
+
+            if (matches) {
+                visibleCount++;
+            }
+        });
+
+        noResults.hidden = visibleCount !== 0;
+    });
+</script>
+
+</body>
+</html>

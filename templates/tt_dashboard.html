@@ -1,0 +1,64 @@
+
+{% extends "base.html" %}
+
+{% block title %}SmartSeat | TT Portal{% endblock %}
+
+{% block content %}
+
+<section class="dashboard-page">
+
+    <div class="dashboard-heading">
+        <div>
+            <span class="eyebrow">AUTHORIZED STAFF PORTAL</span>
+            <h1>Ticket Examiner Dashboard</h1>
+            <p>Review and monitor passenger exchange records.</p>
+        </div>
+
+        <span class="status-pill">Demo Portal</span>
+    </div>
+
+    <div class="dashboard-stats">
+
+        <div class="stat-card">
+            <span>📋</span>
+            <h2>12</h2>
+            <p>Total Records</p>
+        </div>
+
+        <div class="stat-card">
+            <span>⏳</span>
+            <h2>04</h2>
+            <p>Awaiting Review</p>
+        </div>
+
+        <div class="stat-card">
+            <span>✅</span>
+            <h2>08</h2>
+            <p>Acknowledged</p>
+        </div>
+
+        <div class="stat-card">
+            <span>🚆</span>
+            <h2>03</h2>
+            <p>Active Trains</p>
+        </div>
+
+    </div>
+
+    <div class="dashboard-panel">
+        <h2>Passenger Exchange Records</h2>
+
+        <p>
+            Confirmed passenger exchange records will appear
+            here after the three-stage exchange workflow is implemented.
+        </p>
+
+        <div class="notice">
+            This is sample dashboard information.
+            No actual railway staff or TT notifications are connected yet.
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

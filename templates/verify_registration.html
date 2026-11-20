@@ -1,0 +1,51 @@
+
+{% extends "base.html" %}
+
+{% block title %}SmartSeat | Verify OTP{% endblock %}
+
+{% block content %}
+
+<section class="login-section">
+
+    <div class="login-card">
+
+        <div class="login-logo">📱</div>
+
+        <h2>Verify Your Phone Number</h2>
+
+        <p class="muted">
+            Enter the six-digit OTP to complete your registration.
+        </p>
+
+        <div class="otp-box">
+            <p>Demonstration OTP</p>
+            <h2>{{ demo_otp }}</h2>
+            <small>For this college project only.</small>
+        </div>
+
+        <form method="POST"
+              action="{{ url_for('verify_registration') }}">
+
+            <label>Enter OTP</label>
+
+            <input
+                type="text"
+                name="otp"
+                placeholder="Enter 6-digit OTP"
+                pattern="[0-9]{6}"
+                maxlength="6"
+                inputmode="numeric"
+                required
+            >
+
+            <button type="submit" class="primary-btn full-width">
+                Verify & Complete Registration
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+{% endblock %}

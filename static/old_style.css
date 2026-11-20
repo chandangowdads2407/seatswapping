@@ -1,0 +1,705 @@
+/* ==============================
+   SMART TRAIN SEAT SWAPPING
+   Professional Website Design
+   ============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f3f6fc;
+    color: #1e293b;
+    line-height: 1.6;
+}
+
+/* Header */
+
+header {
+    background: linear-gradient(135deg, #101f45, #174ea6, #2878d0);
+    color: white;
+    text-align: center;
+    padding: 48px 20px;
+    box-shadow: 0 5px 20px rgba(15, 40, 90, 0.18);
+}
+
+header h1 {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 750;
+    margin-bottom: 12px;
+    letter-spacing: 0.3px;
+}
+
+header p {
+    font-size: 17px;
+    color: #e2edff;
+}
+
+/* Main Content */
+
+main {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    min-height: 50vh;
+}
+
+main h2 {
+    font-size: 28px;
+    color: #142b52;
+    margin-bottom: 25px;
+}
+
+/* Train and Coach Cards */
+
+.train-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.train-card {
+    position: relative;
+    background: white;
+    padding: 28px;
+    border-radius: 16px;
+    border: 1px solid #e6ebf3;
+    box-shadow: 0 5px 18px rgba(22, 45, 85, 0.07);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    overflow-wrap: anywhere;
+}
+
+.train-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(22, 45, 85, 0.13);
+}
+
+.train-card h3 {
+    font-size: 21px;
+    color: #1757a6;
+    margin-bottom: 18px;
+}
+
+.train-card p {
+    font-size: 15px;
+    color: #475569;
+    margin-bottom: 13px;
+}
+
+.train-card strong {
+    color: #243b61;
+}
+
+/* Train Route */
+
+.route {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 25px 0;
+    font-weight: 650;
+    color: #253b60;
+}
+
+.arrow {
+    color: #2678d4;
+    font-size: 27px;
+    flex-shrink: 0;
+}
+
+/* Buttons */
+
+.button {
+    display: inline-block;
+    background: linear-gradient(135deg, #1767bd, #2588e5);
+    color: white;
+    padding: 12px 21px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 650;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background: linear-gradient(135deg, #104b91, #1767bd);
+    transform: translateY(-2px);
+}
+
+/* Links */
+
+a:not(.button) {
+    color: #1767bd;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+a:not(.button):hover {
+    text-decoration: underline;
+}
+
+/* Form Controls */
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px 14px;
+    margin-top: 6px;
+    margin-bottom: 18px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: white;
+    font-family: inherit;
+    font-size: 15px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #2588e5;
+    box-shadow: 0 0 0 3px rgba(37, 136, 229, 0.12);
+}
+
+/* Tables */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 18px rgba(22, 45, 85, 0.07);
+}
+
+th,
+td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e8edf5;
+}
+
+th {
+    background: #174ea6;
+    color: white;
+}
+
+tr:hover td {
+    background: #f5f9ff;
+}
+
+/* Footer */
+
+footer {
+    text-align: center;
+    padding: 25px 15px;
+    margin-top: 45px;
+    background: #101f45;
+    color: #dbe7fa;
+    font-size: 14px;
+}
+
+/* Mobile Responsive Design */
+
+@media (max-width: 600px) {
+    header {
+        padding: 35px 15px;
+    }
+
+    header p {
+        font-size: 15px;
+    }
+
+    main {
+        width: 92%;
+        margin: 28px auto;
+    }
+
+    main h2 {
+        font-size: 23px;
+    }
+
+    .train-container {
+        grid-template-columns: 1fr;
+    }
+
+    .train-card {
+        padding: 22px;
+    }
+
+    .route {
+        font-size: 14px;
+    }
+
+    table {
+        font-size: 13px;
+    }
+
+    th,
+    td {
+        padding: 10px 7px;
+    }
+}
+/* Navigation Bar */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 17px 6%;
+    background: #101f45;
+    color: white;
+}
+
+.nav-logo {
+    font-size: 21px;
+    font-weight: 750;
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+}
+
+.nav-links a {
+    color: white !important;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.nav-links a:hover {
+    color: #9dcaff !important;
+}
+
+/* Dashboard Statistics */
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-bottom: 45px;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: white;
+    padding: 23px;
+    border-radius: 14px;
+    box-shadow: 0 5px 18px rgba(22, 45, 85, 0.07);
+    border: 1px solid #e6ebf3;
+}
+
+.stat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 55px;
+    height: 55px;
+    background: #eaf3ff;
+    border-radius: 12px;
+    font-size: 27px;
+    flex-shrink: 0;
+}
+
+.stat-card h3 {
+    color: #1757a6;
+    font-size: 24px;
+    margin-bottom: 3px;
+}
+
+.stat-card p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* Train Section */
+
+.train-section {
+    scroll-margin-top: 20px;
+}
+
+.section-description {
+    color: #64748b;
+    margin-top: -15px;
+    margin-bottom: 22px;
+}
+
+/* Search Box */
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: white;
+    border: 1px solid #dbe4f0;
+    padding: 5px 16px;
+    border-radius: 12px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 12px rgba(22, 45, 85, 0.04);
+}
+
+.search-box span {
+    font-size: 21px;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 14px 5px;
+    background: transparent;
+}
+
+.search-box input:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+/* Train Icon */
+
+.train-icon {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+/* Empty Search Results */
+
+.no-results {
+    text-align: center;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    color: #64748b;
+}
+
+/* Sample Data Notice */
+
+.sample-notice {
+    margin-top: 25px;
+    font-size: 13px;
+    color: #64748b;
+}
+
+/* Responsive Layout */
+
+@media (max-width: 700px) {
+    .navbar {
+        padding: 15px 5%;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .nav-logo {
+        font-size: 18px;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .dashboard {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .stat-card {
+        padding: 18px;
+    }
+}
+/* Breadcrumb Navigation */
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* Train Summary Card */
+
+.train-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background: linear-gradient(135deg, #ffffff, #eaf3ff);
+    border: 1px solid #dce8f7;
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 40px;
+    box-shadow: 0 5px 18px rgba(22, 45, 85, 0.06);
+}
+
+.train-summary h2 {
+    color: #1757a6;
+    margin-bottom: 12px;
+}
+
+.train-summary p {
+    margin-bottom: 10px;
+    color: #475569;
+}
+
+.summary-route {
+    font-weight: 650;
+}
+
+.summary-route span {
+    color: #2588e5;
+    margin: 0 12px;
+    font-size: 20px;
+}
+
+.summary-icon {
+    font-size: 55px;
+    background: #dcecff;
+    padding: 18px;
+    border-radius: 16px;
+}
+
+/* Coach Section */
+
+.coach-section {
+    margin-top: 25px;
+}
+
+.coach-icon {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.coach-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.coach-card .button {
+    margin-top: 12px;
+}
+
+/* Back Link */
+
+.back-link {
+    margin-top: 35px;
+}
+
+/* Sample Data Notice */
+
+.sample-notice {
+    margin-top: 20px;
+    font-size: 13px;
+    color: #64748b;
+}
+
+/* Mobile Layout */
+
+@media (max-width: 600px) {
+    .train-summary {
+        padding: 20px;
+    }
+
+    .summary-icon {
+        font-size: 35px;
+        padding: 12px;
+    }
+}
+
+/* Berth Summary */
+
+.berth-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 28px;
+    margin-bottom: 35px;
+    background: linear-gradient(135deg, #ffffff, #eaf3ff);
+    border: 1px solid #dce8f7;
+    border-radius: 16px;
+    box-shadow: 0 5px 18px rgba(22, 45, 85, 0.06);
+}
+
+.berth-summary h2 {
+    color: #1757a6;
+    margin-bottom: 12px;
+}
+
+.berth-summary p {
+    margin-bottom: 8px;
+    color: #475569;
+}
+
+/* Berth Section */
+
+.berth-section {
+    margin-top: 25px;
+}
+
+.berth-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 20px 0;
+    padding: 16px;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid #e6ebf3;
+}
+
+.berth-legend span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.legend-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.legend-dot.available {
+    background: #16a34a;
+}
+
+.legend-dot.occupied {
+    background: #dc2626;
+}
+
+.legend-dot.other {
+    background: #f59e0b;
+}
+
+/* Berth Grid */
+
+.berth-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+}
+
+.berth-card {
+    padding: 20px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(22, 45, 85, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.berth-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(22, 45, 85, 0.1);
+}
+
+.berth-number {
+    margin-bottom: 14px;
+    color: #1757a6;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.berth-card p {
+    margin-top: 8px;
+    color: #475569;
+    font-size: 14px;
+}
+
+.berth-card strong {
+    color: #243b61;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+    .berth-summary {
+        padding: 20px;
+    }
+
+    .berth-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .berth-card {
+        padding: 14px;
+    }
+
+    .berth-legend {
+        gap: 12px;
+    }
+}
+/* Seat Swap Form */
+
+.swap-form {
+    max-width: 750px;
+    margin: 25px 0 45px;
+    padding: 30px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    box-shadow: 0 5px 18px rgba(22, 45, 85, 0.07);
+}
+
+.swap-form label {
+    display: block;
+    margin-bottom: 6px;
+    color: #243b61;
+    font-weight: 700;
+}
+
+.swap-form select {
+    display: block;
+    width: 100%;
+    margin-bottom: 22px;
+}
+
+.swap-form button {
+    font-family: inherit;
+}
+
+.passenger-heading {
+    margin-top: 35px;
+}
+
+.message {
+    max-width: 900px;
+    margin-bottom: 20px;
+    padding: 15px 18px;
+    border-radius: 9px;
+    font-weight: 600;
+}
+
+.message.success {
+    color: #166534;
+    background: #dcfce7;
+    border: 1px solid #86efac;
+}
+
+.message.error {
+    color: #991b1b;
+    background: #fee2e2;
+    border: 1px solid #fecaca;
+}
+
+@media (max-width: 600px) {
+    .swap-form {
+        padding: 20px;
+    }
+}

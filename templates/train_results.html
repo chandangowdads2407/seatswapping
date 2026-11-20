@@ -1,0 +1,155 @@
+
+{% extends "base.html" %}
+
+{% block title %}SmartSeat | Available Trains{% endblock %}
+
+{% block content %}
+
+<section class="dashboard-page">
+
+    <div class="dashboard-heading">
+        <div>
+            <span class="eyebrow">SMARTSEAT PASSENGER PORTAL</span>
+            <h1>Available Trains</h1>
+            <p>
+                {{ source }} → {{ destination }}
+                | Journey Date: {{ journey_date }}
+            </p>
+        </div>
+    </div>
+
+    <div class="dashboard-panel">
+
+        <div class="results-heading">
+            <div>
+                <h2>Available Train Services</h2>
+                <p>
+                    {{ trains|length }} train(s) found for your journey.
+                </p>
+            </div>
+        </div>
+
+        {% for train in trains %}
+
+        <div class="train-card result-train-card">
+
+            <div class="result-train-header">
+                <div>
+                    <span class="eyebrow">SAMPLE TRAIN SERVICE</span>
+                    <h2>{{ train.train_name }}</h2>
+                    <p>
+                        Train Number:
+                        <strong>{{ train.train_number }}</strong>
+                    </p>
+                </div>
+
+                <span class="train-date">
+                    {{ journey_date }}
+                </span>
+            </div>
+
+            <div class="result-route">
+
+                <div class="result-station">
+                    <span class="station-label">FROM</span>
+                    <h3>{{ source }}</h3>
+                    <strong>
+                        {{ train.source_departure or "--" }}
+                    </strong>
+                    <small>Departure</small>
+                </div>
+
+                <div class="route-connector">
+                    <span>────────────→</span>
+                    <small>Train Journey</small>
+                </div>
+
+                <div class="result-station">
+                    <span class="station-label">TO</span>
+                    <h3>{{ destination }}</h3>
+                    <strong>
+                        {{ train.destination_arrival or "--" }}
+                    </strong>
+                    <small>Arrival</small>
+                </div>
+
+            </div>
+
+            <div class="train-extra-info">
+                <div>
+                    <small>Final Station</small>
+                    <strong>{{ train.final_station or "--" }}</strong>
+                </div>
+
+                <div>
+                    <small>Final Arrival</small>
+                    <strong>{{ train.final_arrival or "--" }}</strong>
+                </div>
+            </div>
+
+            <details class="train-timetable">
+
+                <summary>
+                    View Complete Station Timetable
+                </summary>
+
+                <div class="timetable-wrapper">
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Station</th>
+                                <th>Arrival</th>
+                                <th>Departure</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for stop in train.stops %}
+                            <tr>
+                                <td>{{ stop.station_name }}</td>
+                                <td>{{ stop.arrival_time or "--" }}</td>
+                                <td>{{ stop.departure_time or "--" }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </details>
+
+            <div class="result-card-footer">
+
+                <a href="{{ url_for('view_coaches', train_id=train.train_id) }}"
+                   class="primary-btn">
+                    Select Train & View Coaches →
+                </a>
+
+            </div>
+
+        </div>
+
+        {% else %}
+
+        <div class="notice">
+            <h3>No Trains Found</h3>
+            <p>
+                No sample trains are available for this route.
+                Please try another station combination.
+            </p>
+        </div>
+
+        {% endfor %}
+
+        <p class="back-link">
+            <a href="{{ url_for('search_trains') }}">
+                ← Back to Train Search
+            </a>
+        </p>
+
+    </div>
+
+</section>
+
+{% endblock %}

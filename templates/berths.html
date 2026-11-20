@@ -1,0 +1,93 @@
+
+{% extends "base.html" %}
+
+{% block title %}SmartSeat | Select Berth{% endblock %}
+
+{% block content %}
+
+<section class="dashboard-page">
+
+    <div class="dashboard-heading">
+        <div>
+            <span class="eyebrow">SMARTSEAT PASSENGER PORTAL</span>
+            <h1>Select Your Berth</h1>
+            <p>
+                Train: {{ coach.train_number }}
+                | Coach: {{ coach.coach_number }}
+                | {{ coach.coach_type }}
+            </p>
+        </div>
+    </div>
+
+    <div class="dashboard-panel">
+
+        <h2>Berth Availability</h2>
+        <p>Total Seats / Berths: {{ coach.total_berths }}</p>
+
+        <div class="coach-layout">
+
+            <div class="coach-end">
+                <span>TOILET</span>
+                <span>TOILET</span>
+            </div>
+
+            {% for start in range(0, berths|length, 8) %}
+
+            <div class="berth-bay">
+
+                {% for berth in berths[start:start+8] %}
+
+                {% set seat_type = berth.berth_type|lower %}
+
+                <div class="rail-seat {% if berth.status == 'Available' %}available{% else %}occupied{% endif %}">
+
+                    <strong>{{ berth.berth_number }}</strong>
+
+                    <small>{{ berth.berth_type }}</small>
+
+                    {% if coach.coach_type in ["Sleeper", "AC 3 Tier"] and loop.index0 in [0, 3, 4, 7] %}
+
+                        <span class="window-label">Window Side</span>
+
+                    {% elif "window" in seat_type or "side lower" in seat_type or "side upper" in seat_type %}
+
+                        <span class="window-label">Window Side</span>
+
+                    {% elif "aisle" in seat_type %}
+
+                        <span class="aisle-label">Aisle Seat</span>
+
+                    {% else %}
+
+                        <span class="aisle-label">Middle</span>
+
+                    {% endif %}
+
+                    <span>{{ berth.status }}</span>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+            {% endfor %}
+
+            <div class="coach-end">
+                <span>TOILET</span>
+                <span>TOILET</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <p>
+        <a href="{{ url_for('view_coaches', train_id=coach.train_id) }}">
+            ← Back to Coaches
+        </a>
+    </p>
+
+</section>
+
+{% endblock %}
