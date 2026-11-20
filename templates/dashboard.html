@@ -7,16 +7,18 @@
 
 <section class="dashboard-page">
 
+    <!-- Dashboard Header -->
     <div class="dashboard-heading">
         <div>
             <span class="eyebrow">PASSENGER PORTAL</span>
-            <h1>Welcome to Your Dashboard</h1>
+            <h1>Welcome, {{ passenger_name }}!</h1>
             <p>Manage your travel and seat exchange activity.</p>
         </div>
 
-        <span class="status-pill">Demo Dashboard</span>
+        <span class="status-pill">Passenger Account</span>
     </div>
 
+    <!-- Dashboard Statistics -->
     <div class="dashboard-stats">
 
         <div class="stat-card">
@@ -45,27 +47,45 @@
 
     </div>
 
-    <div class="dashboard-panel">
-    <h2>Find Your Journey</h2>
-    <p>Search trains for your next journey.</p>
+    <!-- Main Dashboard Panels -->
+    <div class="dashboard-panels">
 
-    <a href="{{ url_for('search_trains') }}" class="primary-btn">
-        Find Trains →
-    </a>
-</div>
-
+        <!-- Train Search -->
         <div class="dashboard-panel">
-            <h2>Seat Exchange</h2>
-            <p>Send requests and manage received requests.</p>
+            <h2>🚆 Find Your Journey</h2>
 
-            <button class="secondary-btn" disabled>
-                Coming in Phase 5
+            <p>
+                Find trains, explore coaches and select your berth
+                for your upcoming journey.
+            </p>
+
+            <button class="primary-btn" disabled>
+                Train Search — Coming Soon
             </button>
         </div>
 
+        <!-- Seat Exchange -->
         <div class="dashboard-panel">
-            <h2>Exchange History</h2>
-            <p>Review your previous exchange activities.</p>
+            <h2>🔄 Seat Exchange</h2>
+
+            <p>
+                Send seat exchange requests and manage requests
+                received from other passengers.
+            </p>
+
+            <button class="secondary-btn" disabled>
+                Coming Soon
+            </button>
+        </div>
+
+        <!-- Exchange History -->
+        <div class="dashboard-panel">
+            <h2>📋 Exchange History</h2>
+
+            <p>
+                Review your previous seat exchange activities
+                and confirmed exchanges.
+            </p>
 
             <button class="secondary-btn" disabled>
                 Coming Soon

@@ -1248,3 +1248,38 @@ footer p {
         overflow-wrap: break-word;
     }
 }
+
+
+/* Create Account Button */
+.register-section {
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.register-section p {
+    color: #64748b;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.register-btn {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 16px;
+    border: 2px solid #2563eb;
+    border-radius: 10px;
+    color: #2563eb;
+    background: transparent;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.25s ease;
+}
+
+.register-btn:hover {
+    background: #2563eb;
+    color: white;
+}

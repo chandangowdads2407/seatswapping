@@ -17,49 +17,48 @@
 
         <h2>🚆 Search Available Trains</h2>
 
-        <form method="POST" action="{{ url_for('search_trains') }}">
+        
+<form method="POST" action="{{ url_for('find_trains') }}">
 
-            <label>Source Station</label>
+    <label>Source Station</label>
+    <select name="source" required>
+        <option value="">Select Source</option>
 
-            <select name="source" required>
-                <option value="">Select Source</option>
+        {% for station in stations %}
+            <option value="{{ station }}"
+                {% if source == station %}selected{% endif %}>
+                {{ station }}
+            </option>
+        {% endfor %}
+    </select>
 
-                {% for station in stations %}
-                    <option value="{{ station }}"
-                        {% if source == station %}selected{% endif %}>
-                        {{ station }}
-                    </option>
-                {% endfor %}
-            </select>
+    <label>Destination Station</label>
+    <select name="destination" required>
+        <option value="">Select Destination</option>
 
-            <label>Destination Station</label>
+        {% for station in stations %}
+            <option value="{{ station }}"
+                {% if destination == station %}selected{% endif %}>
+                {{ station }}
+            </option>
+        {% endfor %}
+    </select>
 
-            <select name="destination" required>
-                <option value="">Select Destination</option>
+    <label>Journey Date</label>
+    <input
+        type="date"
+        name="journey_date"
+        value="{{ journey_date }}"
+        min="{{ today }}"
+        required
+    >
 
-                {% for station in stations %}
-                    <option value="{{ station }}"
-                        {% if destination == station %}selected{% endif %}>
-                        {{ station }}
-                    </option>
-                {% endfor %}
-            </select>
+    <button type="submit" class="primary-btn full-width">
+        Search Trains →
+    </button>
 
-            <label>Journey Date</label>
+</form>
 
-            <input
-                type="date"
-                name="journey_date"
-                value="{{ journey_date }}"
-                min="{{ today }}"
-                required
-            >
-
-            <button type="submit" class="primary-btn full-width">
-                Search Trains →
-            </button>
-
-        </form>
 
     </div>
 
